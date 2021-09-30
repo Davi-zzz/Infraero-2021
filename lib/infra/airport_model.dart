@@ -49,8 +49,8 @@ class AirportModel extends AirportEntity {
       uuid: map['uuid'],
       name: map['name'],
       localization: map['localization'],
-      numberOfRunways: map['numberOfRunways'],
-      maxWeight: map['maxWeight'],
+      numberOfRunways: map['number_of_runways'],
+      maxWeight: map['max_weight'],
     );
   }
 

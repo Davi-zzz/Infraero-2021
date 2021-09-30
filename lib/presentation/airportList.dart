@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:infraaero_project/infra/flight_model.dart';
-import 'airportList.dart';
+import 'package:infraaero_project/infra/airport_model.dart';
+import 'package:infraaero_project/presentation/flightList.dart';
 import 'mock.dart';
 
-class FlightList extends StatefulWidget {
+class AirportList extends StatefulWidget {
   @override
-  _FlightListState createState() => _FlightListState();
+  _AirportListState createState() => _AirportListState();
 }
 
-class _FlightListState extends State<FlightList> {
+class _AirportListState extends State<AirportList> {
   @override
   Widget build(BuildContext context) {
-    final flightslist = <FlightModel>[];
+    final airportlist = <AirportModel>[];
 
     setState(() {
-      for (var i = 0; i < flights.length; i++) {
-        flightslist.add(FlightModel.fromMap(flights[i]));
+      for (var i = 0; i < airports.length; i++) {
+        airportlist.add(AirportModel.fromMap(airports[i]));
       }
     });
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lista de Voo'),
+        title: Text('Lista de Aeroportos'),
         centerTitle: true,
       ),
       body: ListView(
@@ -38,21 +38,21 @@ class _FlightListState extends State<FlightList> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Código-> ${flightslist[index].uuid}', style: TextStyle(color: Colors.white)),
+                      Text('Código-> ${airportlist[index].uuid}', style: TextStyle(color: Colors.white)),
                       SizedBox(height: 10),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Flexible(child: Text('Origem -> ${flightslist[index].originAirport}', style: TextStyle(color: Colors.white))),
-                          Flexible(child: Text('Destino -> ${flightslist[index].destinyAirport}', style: TextStyle(color: Colors.white))),
+                          Flexible(child: Text('Nome -> ${airportlist[index].name}', style: TextStyle(color: Colors.white))),
+                          Flexible(child: Text('Localização -> ${airportlist[index].localization}', style: TextStyle(color: Colors.white))),
                         ],
                       ),
                       Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Compania -> ${flightslist[index].company}', style: TextStyle(color: Colors.white)),
-                        Text('Avião -> ${flightslist[index].airplane}', style: TextStyle(color: Colors.white)),
+                        Text('Numero de Pistas -> ${airportlist[index].numberOfRunways}', style: TextStyle(color: Colors.white)),
+                        Text('Peso Máximo Suportado -> ${airportlist[index].maxWeight}', style: TextStyle(color: Colors.white)),
                       ],
                     ),
                     ],
@@ -87,9 +87,9 @@ class _FlightListState extends State<FlightList> {
           ),
         ],
         onTap: (index) {
-           if (index == 2) {
+          if (index == 0) {
             Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-              return AirportList();
+              return FlightList();
             }));
           }
         },
