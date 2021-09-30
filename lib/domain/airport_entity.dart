@@ -1,4 +1,6 @@
 class AirportEntity {
+  final String uuid;
+  
   final String name;
 
   final String localization;
@@ -12,5 +14,6 @@ class AirportEntity {
     required this.localization,
     required this.numberOfRunways,
     required this.maxWeight,
+    required this.uuid
   });
 }

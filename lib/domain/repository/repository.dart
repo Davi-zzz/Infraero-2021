@@ -8,10 +8,6 @@ enum Failures {
     comapanyError,
     flightError
   }
-  enum ConnectionInfo {
-    connectionFail,
-
-  }
 abstract class InfraeroProjectRepository {
 
 //Airport section
@@ -23,7 +19,9 @@ abstract class InfraeroProjectRepository {
 // flights section
   Future<Either<Failures, List<CompanyEntity>>>? getFlights();
 // end flights
-
+// airplane section
+  Future<Either<Failures, List<CompanyEntity>>>? getAirplane();
+// end airplane
 
   
 }
